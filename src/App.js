@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { useState } from "react";
+import Home from "./Home";
+import Nav from "./Nav";
+import FilterNav from "./FilterNav";
 
 function App() {
+  // eslint-disable-next-line
+  const [isloggedIn, setIsLoggedIn] = useState(false);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+      <Nav setIsLoggedIn={setIsLoggedIn} />
+      <FilterNav />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/sign-in">
+          <SignIn setIsLoggedIn={setIsLoggedIn} />
+        </Route>
+        <Route path="/sign-up">
+          <SignUp setIsLoggedIn={setIsLoggedIn} />
+        </Route>
+      </Switch>
+      </>
   );
 }
 
-export default App;
+export default withRouter(App);
