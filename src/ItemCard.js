@@ -17,9 +17,8 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ItemCard() {
+export default function ItemCard({cart, item, setCart}) {
   const classes = useStyles();
-
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -30,20 +29,24 @@ export default function ItemCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            ITEM
+            {item.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            ITEM DESCRIPTION
+            {item.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Order Now - item $
+        <Button
+          onClick={() => setCart([...cart, item])}
+          size="small"
+          color="primary"
+        >
+          Order Now - ${item.price}
         </Button>
-        <Button size="small" color="primary">
+        {/* <Button size="small" color="primary">
           Learn More
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );
