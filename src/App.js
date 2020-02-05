@@ -1,24 +1,31 @@
-import React from "react";
-import "./App.css";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import React, { useState } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-import { useState } from "react";
+import "./App.css";
+import Cart from "./Cart";
 import Home from "./Home";
 import Nav from "./Nav";
-import FilterNav from "./FilterNav";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+
+// Fontawesome Shit
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+library.add({ faShoppingCart });
 
 function App() {
-  // eslint-disable-next-line
-  const [isloggedIn, setIsLoggedIn] = useState(false);
-  
+  const [isloggedIn, setIsLoggedIn] = useState(false); // eslint-disable-line
+  const [cart, setCart] = useState([]);
+
   return (
-      <>
-      <Nav setIsLoggedIn={setIsLoggedIn} />
-      <FilterNav />
+    <>
+      <Nav setIsLoggedIn={setIsLoggedIn} cartLength={cart.length} />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home cart={cart} setCart={setCart} />
+        </Route>
+        <Route path="/checkout">
+          <Cart cart={cart} />
         </Route>
         <Route path="/sign-in">
           <SignIn setIsLoggedIn={setIsLoggedIn} />
@@ -27,7 +34,7 @@ function App() {
           <SignUp setIsLoggedIn={setIsLoggedIn} />
         </Route>
       </Switch>
-      </>
+    </>
   );
 }
 
