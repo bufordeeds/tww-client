@@ -16,18 +16,25 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FilterNav() {
+export default function FilterNav({ setNavFilter }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="sticky">
         <Toolbar>
-          <Button color="inherit">All</Button>
-          <Button color="inherit">Wings</Button>
-          <Button color="inherit">Sides</Button>
-          <Button color="inherit">Merch</Button>
-          
+          <Button onClick={() => setNavFilter("all")} color="inherit">
+            All
+          </Button>
+          <Button onClick={() => setNavFilter("wings")} color="inherit">
+            Wings
+          </Button>
+          <Button onClick={() => setNavFilter("side")} color="inherit">
+            Sides
+          </Button>
+          <Button onClick={() => setNavFilter("merch")} color="inherit">
+            Merch
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
