@@ -19,30 +19,23 @@ const Home = ({ cart, setCart }) => {
   }, [navFilter]);
 
   const filterItems = items => {
-    if (navFilter === "all") {
-      setItems(items);
-      console.log('all filter is being used');
-      
-    }
-    if (navFilter === "wings") {
-      let boneInWings = items.filter(
-       item => item.item_type === "bone-in wing"
-      );
-      let boneLessWings = items.filter(item => item.item_type === "bone-less wing");
-      let wings = boneInWings.concat(boneLessWings)
-      setItems(wings)
-      console.log('wings filter is being used');
-    }
-    if (navFilter === "side") {
-      let sides = items.filter(item => item.item_type === "side");
-      setItems(sides);
-      console.log('side filter is being used');
-    }
-    if (navFilter === "merch") {
-      let merch = items.filter(item => item.item_type === "merch");
-      setItems(merch);
-      console.log('merch filter is being used');
-    }
+    switch (navFilter) {
+      case("merch"):
+        let merch = items.filter(item => item.item_type === "merch");
+        setItems(merch);
+        break;
+      case("wings"):
+        let wings = items.filter(({item_type}) => (item_type === "bone-in wing" || item_type === "bone-less wing"));
+        setItems(wings)
+        break;
+      case("side"):
+        let sides = items.filter(item => item.item_type === "side");
+        setItems(sides);
+        break;
+      default:
+        setItems(items);
+        break;
+    };
   };
 
   return (
