@@ -6,8 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import {Link} from 'react-router-dom'
-import history from './history'
+import { Link } from "react-router-dom";
+import history from "./history";
+import { FontAwesomeIcon as FAI } from "@fortawesome/react-fontawesome";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,9 +25,9 @@ const useStyles = makeStyles(theme => ({
 const logout = setIsLoggedIn => {
   localStorage.clear();
   setIsLoggedIn(false);
-  history.push('/sign-in')
+  history.push("/sign-in");
 };
-export default function Nav({ setIsLoggedIn }) {
+export default function Nav({ cartLength, setIsLoggedIn }) {
   const classes = useStyles();
 
   return (
@@ -41,11 +42,23 @@ export default function Nav({ setIsLoggedIn }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Tommy Want Wingy
-          </Typography>
+          <Link to={"/"}>
+            <Typography variant="h6" className={classes.title}>
+              TWW
+            </Typography>
+          </Link>
+          {cartLength > 0 ? (
+            <Link to={"/checkout"} className={"nav__cart-link"}>
+              <Button color="inherit">
+                <FAI icon={"shopping-cart"} size={"2x"} color={"white"} />
+                <span className="cart__counter">{cartLength}</span>
+              </Button>
+            </Link>
+          ) : (
+            <></>
+          )}
           {localStorage.jwt ? (
-            <Link to={'/'}>
+            <Link to={"/"}>
               <Button onClick={() => logout(setIsLoggedIn)} color="inherit">
                 Logout
               </Button>
