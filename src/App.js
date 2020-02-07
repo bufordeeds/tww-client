@@ -14,24 +14,30 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 library.add({ faShoppingCart });
 
 function App() {
-  const [isloggedIn, setIsLoggedIn] = useState(false); // eslint-disable-line
+  // const [isloggedIn, setIsLoggedIn] = useState(false); // eslint-disable-line
   const [cart, setCart] = useState([]);
+  const [order, setOrder] = useState([]);
 
   return (
     <>
-      <Nav setIsLoggedIn={setIsLoggedIn} cartLength={cart.length} />
+      <Nav cartLength={cart.length} />
       <Switch>
         <Route exact path="/">
-          <Home cart={cart} setCart={setCart} />
+          <Home
+            cart={cart}
+            setCart={setCart}
+            order={order}
+            setOrder={setOrder}
+          />
         </Route>
         <Route path="/checkout">
-          <Cart cart={cart} />
+          <Cart cart={cart} order={order} setOrder={setOrder} />
         </Route>
         <Route path="/sign-in">
-          <SignIn setIsLoggedIn={setIsLoggedIn} />
+          <SignIn />
         </Route>
         <Route path="/sign-up">
-          <SignUp setIsLoggedIn={setIsLoggedIn} />
+          <SignUp />
         </Route>
       </Switch>
     </>
