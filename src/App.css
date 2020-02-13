@@ -23,10 +23,75 @@
 
 .card__container {
   background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.35) !important;
   display: inline-block;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+  margin: 10px;
   padding: 20px 25px;
 }
+
+.item-card__container {
+  width: 450px;
+
+}
+
+.filter-nav{
+  background: #000000 !important;
+  position: sticky;
+  top: 0;
+  z-index: 6969;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.filter-nav > * {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home__container {
+  background-color: #f0f2f5;
+  margin: 0 auto;
+  max-width: 1040px;
+
+}
+
+.logo{
+  height: 5rem !important;
+  width: 5rem !important;
+}
+
+
+.nav {
+
+  /* Yellow:            #fbc823 */
+  /* Red:               #cb222c
+  Blue:              #1fcdff */
+  color: #e90e0e !important
+}
+
+.nav-link{
+  color: rgb(255, 255, 255);
+  font-family: helvetica;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#root {
+  background-color: #f0f2f5 !important;
+}
+
+html {
+  background-color: #f0f2f5 
+  ;
+}
+
+/* .MuiAppBar-colorPrimary {
+    color: #fff;
+    background-color: #f21628; */
+
+    .makeStyles-media-449 {
+    height: 300px !important;
+    }
