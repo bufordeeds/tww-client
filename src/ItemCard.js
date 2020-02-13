@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import CardContainer from './components/Card/CardContainer';
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -17,37 +17,37 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ItemCard({cart, item, setCart}) {
+export default function ItemCard({ cart, item, setCart }) {
   const classes = useStyles();
+
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://lollipopchickenwings.com/wp-content/uploads/2018/05/Chicken-pictures-03.png"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {item.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {item.description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button
-          onClick={() => setCart([...cart, item])}
-          size="small"
-          color="primary"
-        >
-          Order Now - ${item.price}
-        </Button>
-        {/* <Button size="small" color="primary">
+    <CardContainer
+      className={'item-card__container'}
+      handleClick={() => setCart([...cart, item])}
+    >
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={item.item_image}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {item.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {item.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Order Now - ${item.price.toFixed(2)}
+          </Button>
+          {/* <Button size="small" color="primary">
           Learn More
         </Button> */}
-      </CardActions>
-    </Card>
+        </CardActions>
+    </CardContainer>
   );
 }
