@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CardContainer = ({ children }) => {
+const CardContainer = ({ children, className, handleClick }) => {
   return (
-    <span className='card__container'>
+    <span onClick={handleClick} className={`card__container ${className}`}>
       {children}
     </span>
   );
