@@ -6,9 +6,8 @@ import Home from "./Home";
 import Nav from "./Nav";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import OrderConfirmation from './OrderConfirmation'
-import OrderHistory from './OrderHistory'
-import Map from './Map'
+import OrderConfirmation from "./OrderConfirmation";
+import OrderHistory from "./OrderHistory";
 
 // Fontawesome Shit
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -52,9 +51,6 @@ function App() {
         </Route>
         <Route path="/order-history">
           <OrderHistory />
-        </Route>
-        <Route path="/directions">
-          <Map />
         </Route>
       </Switch>
     </>
