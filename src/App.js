@@ -6,6 +6,9 @@ import Home from "./Home";
 import Nav from "./Nav";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import OrderConfirmation from './OrderConfirmation'
+import OrderHistory from './OrderHistory'
+import Map from './Map'
 
 // Fontawesome Shit
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -20,7 +23,7 @@ function App() {
 
   return (
     <>
-      <Nav cartLength={cart.length} />
+      <Nav cartLength={cart.length} setCart={setCart} />
       <Switch>
         <Route exact path="/">
           <Home
@@ -31,13 +34,27 @@ function App() {
           />
         </Route>
         <Route path="/checkout">
-          <Cart cart={cart} order={order} setOrder={setOrder} />
+          <Cart
+            cart={cart}
+            order={order}
+            setOrder={setOrder}
+            setCart={setCart}
+          />
         </Route>
         <Route path="/sign-in">
           <SignIn />
         </Route>
         <Route path="/sign-up">
           <SignUp />
+        </Route>
+        <Route path="/order-confirmation">
+          <OrderConfirmation />
+        </Route>
+        <Route path="/order-history">
+          <OrderHistory />
+        </Route>
+        <Route path="/directions">
+          <Map />
         </Route>
       </Switch>
     </>
