@@ -13,13 +13,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import history from "./history";
-// import { Redirect } from "react-router-dom"; 
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <a color="inherit" href="http://www.tommywantwingyatx.com/">
+      <a
+        color="inherit"
+        href="http://www.tommywantwingyatx.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Tommy Want Wingy
       </a>{" "}
       {new Date().getFullYear()}
@@ -62,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn({setIsLoggedIn}) {
+export default function SignIn() {
   const classes = useStyles();
 
   //hooks
@@ -87,7 +91,6 @@ export default function SignIn({setIsLoggedIn}) {
     await axios.post(api, { customer }).then(res => {
       localStorage.setItem("customer", JSON.stringify(res.data.customer));
       localStorage.setItem("jwt", res.data.jwt);
-      setIsLoggedIn(true);
     });
 
     history.push("/");
