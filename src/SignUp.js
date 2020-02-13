@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import history from './history';
+import history from "./history";
 
 // MATERIAL UI SHIT
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,7 +19,12 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <a color="inherit" href="http://www.tommywantwingyatx.com/">
+      <a
+        color="inherit"
+        href="http://www.tommywantwingyatx.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Tommy Want Wingy
       </a>{" "}
       {new Date().getFullYear()}
@@ -48,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignUp({ setIsLoggedIn }) {
+export default function SignUp() {
   const classes = useStyles();
 
   const [firstName, setFirstName] = useState("");
@@ -86,8 +91,7 @@ export default function SignUp({ setIsLoggedIn }) {
     await axios.post(api, { customer }).then(res => {
       localStorage.setItem("customer", JSON.stringify(res.data.customer));
       localStorage.setItem("jwt", res.data.jwt);
-      setIsLoggedIn(true);
-      history.push('/');
+      history.push("/");
     });
   };
   return (
@@ -153,7 +157,7 @@ export default function SignUp({ setIsLoggedIn }) {
                 required
                 fullWidth
                 id="phoneNumber"
-                label="Phone Number"
+                label="(xxx)-xxx-xxxx"
                 name="phoneNumber"
                 autoComplete="phoneNumber"
               />
