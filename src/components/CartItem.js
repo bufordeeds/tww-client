@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 
-const CartItem = ({item}) => {
+const CartItem = ({ order }) => {
   return (
     <>
-      {item.name}
+      {order.name}: ${order.price.toFixed(2)} x {order.quantity}
+      <br></br>
     </>
   );
-}
+};
 
 export default CartItem;
