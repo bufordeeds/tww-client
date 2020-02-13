@@ -2,50 +2,47 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import history from "./history";
 import { FontAwesomeIcon as FAI } from "@fortawesome/react-fontawesome";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     flexGrow: 1
+//   },
+//   menuButton: {
+//     marginRight: theme.spacing(2)
+//   },
+//   title: {
+//     flexGrow: 1
+//   }
+// }));
 
-const logout = setIsLoggedIn => {
+const logout = setCart => {
+  setCart([]);
   localStorage.clear();
-  setIsLoggedIn(false);
   history.push("/sign-in");
 };
-export default function Nav({ cartLength, setIsLoggedIn }) {
-  const classes = useStyles();
+export default function Nav({ cartLength, setCart }) {
+  // const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={"nav"}>
       <AppBar position="sticky">
         <Toolbar>
           <IconButton
             edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link to={"/"}>
-            <Typography variant="h6" className={classes.title}>
-              TWW
-            </Typography>
+          ></IconButton>
+          <Link className={"logo-div"} to={"/"}>
+            <img
+              className={"logo"}
+              src="tww-logo.png"
+              alt="tommy want wingy logo"
+            ></img>
           </Link>
           {cartLength > 0 ? (
             <Link to={"/checkout"} className={"nav__cart-link"}>
@@ -58,13 +55,18 @@ export default function Nav({ cartLength, setIsLoggedIn }) {
             <></>
           )}
           {localStorage.jwt ? (
-            <Link to={"/"}>
-              <Button onClick={() => logout(setIsLoggedIn)} color="inherit">
-                Logout
-              </Button>
-            </Link>
+            <>
+              <Link className={"nav-link"} to="/order-history">
+                Order History
+              </Link>
+              <Link className={"nav-link"} to={"/"}>
+                <Button onClick={() => logout(setCart)} color="inherit">
+                  Logout
+                </Button>
+              </Link>
+            </>
           ) : (
-            <Link to={"/sign-in"}>
+            <Link className={"nav-link"} to={"/sign-in"}>
               <Button color="inherit">Login</Button>
             </Link>
           )}
