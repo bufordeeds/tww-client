@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiCardMedia-root.makeStyles-media--94 {
+  height: 300px !important;
+}
