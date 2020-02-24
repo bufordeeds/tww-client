@@ -1,5 +1,6 @@
 .nav__cart-link {
   position: relative;
+  padding-right: 2rem;
 }
 
 .nav__cart-link .cart__counter {
@@ -33,17 +34,15 @@
 
 .item-card__container {
   width: 450px;
-
 }
 
-.filter-nav{
-  background: #000000 !important;
+.filter-nav {
+  background-color: #000000 !important;
   position: sticky;
   top: 0;
   z-index: 6969;
   display: flex;
   justify-content: space-around;
-  
 }
 
 .filter-nav > * {
@@ -55,24 +54,22 @@
   background-color: #f0f2f5;
   margin: 0 auto;
   max-width: 1040px;
-
 }
 
-.logo{
+.logo {
   height: 5rem !important;
   width: 5rem !important;
 }
 
-
 .nav {
-
   /* Yellow:            #fbc823 */
   /* Red:               #cb222c
   Blue:              #1fcdff */
-  color: #e90e0e !important
+  color: #e90e0e !important;
 }
 
-.nav-link{
+.nav-link {
+  padding-right: 0rem;
   color: rgb(255, 255, 255);
   font-family: helvetica;
   text-decoration: none;
@@ -84,14 +81,43 @@
 }
 
 html {
-  background-color: #f0f2f5 
-  ;
+  background-color: #f0f2f5;
+}
+#id {
+  background-color: crimson !important;
+}
+
+.filter-nav-button {
+  color: rgb(255, 255, 255);
+  justify-content: space-around;
+  font-family: helvetica;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 /* .MuiAppBar-colorPrimary {
     color: #fff;
     background-color: #f21628; */
 
-    .makeStyles-media-449 {
-    height: 300px !important;
-    }
+.makeStyles-media-449 {
+  height: 300px !important;
+}
+
+.MuiCardMedia-root.makeStyles-media-1253 {
+  height: 300px !important;
+}
+
+.MuiCardMedia-root.makeStyles-media-94 {
+  height: 300px !important;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: #f21628 !important;
+}
+
+.MuiAppBar-root {
+  background-color: red;
+}
+.MuiAppBar-root.filter-nav {
+  background-color: black !important;
+}
